@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Bellefair&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;800;900&display=swap");
+
+// VARIABLES
+
+$ff-condensed: "Barlow Condensed";
+$ff-title: "Bellefair";
+$ff-normal: "Barlow";
+
+$fs-900: 9.375rem;
+$fs-800: 6.25rem;
+$fs-700: 3.5rem;
+$fs-600: 2rem;
+$fs-500: 1.75rem;
+$fs-400: 1.125rem;
+$ls-500: 0.295rem;
+$lh-400: 2;
+
+$dark: hsl(230 35% 7%);
+$light: hsl(231 77% 90%);
+$white: hsl(0 0% 100%);
+
+// ANIMATION
+@keyframes linebeat {
+    0% {
+        transform-origin: center;
+        transform: scale(1);
+        outline: 10px solid $white;
+        outline-offset: -10px;
+        opacity: 1;
+    }
+    80% {
+        transform-origin: center;
+        outline: 10px solid $white;
+        outline-offset: -10px;
+        opacity: 1;
+    }
+    100% {
+        transform-origin: center;
+        transform: scale(1.3);
+        outline: 10px solid $white;
+        outline-offset: -10px;
+        opacity: 0;
+    }
+}
+
+html {
+    font-size: 16px;
+    color: $white;
+    font-family: $ff-normal;
+    overflow-y: hidden;
+}
+
+#hero {
+    background-image: url(../images/home/background-home-desktop.jpg);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 30px;
+    .content {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin: 10em 50px;
+        .text {
+            color: $light;
+            h2 {
+                font-family: $ff-normal;
+                text-transform: uppercase;
+                letter-spacing: $ls-500;
+                font-size: $fs-500;
+                line-height: 1;
+            }
+            h1 {
+                font-family: $ff-title;
+                font-size: $fs-900;
+                letter-spacing: 7px;
+                margin: 30px 0 20px 0;
+                color: $white;
+            }
+            p {
+                letter-spacing: 1px;
+                line-height: 30px;
+                text-align: justify;
+                font-size: $fs-400;
+                max-width: 540px;
+            }
+        }
+        .hero-btn {
+            background-color: $white;
+            min-width: 250px;
+            min-height: 250px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $dark;
+            font-size: $fs-600;
+            font-family: $ff-title;
+            position: relative;
+            z-index: 1;
+            &:hover {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0%;
+                    left: 0%;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 100%;
+                    z-index: -1;
+                    animation: 1.6s ease-in-out infinite linebeat;
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0%;
+                    left: 0%;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 100%;
+                    z-index: -1;
+                    animation: 1.6s ease-in-out 0.8s infinite linebeat;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:1100px){
+    #hero{
+        .content{
+            .text{
+                h1{
+                    font-size: 8rem;
+                }
+            }
+            .hero-btn{
+                margin-bottom: -120px;
+            }
+        }
+    }
+}
+@media screen and (max-width:991px){
+    #hero{
+        justify-content: flex-end;
+        padding: 0 10px;
+        .content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+            margin-bottom: 50px;
+            .text{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                h1{
+                    font-size: 8rem;
+                }
+                p, h2{
+                    text-align: center;
+                }
+            }
+            .hero-btn{
+                margin-bottom: 0px;
+                margin-top: 40px;
+            }
+        }
+    }
+}
+@media screen and (max-width:768px){
+    #hero{
+        .content{
+            margin-bottom: 20px;
+            .text{
+                h1{
+                    font-size: 3.5rem;
+                }
+                h2{
+                    font-size: 1.4rem;
+                }
+                p{
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
