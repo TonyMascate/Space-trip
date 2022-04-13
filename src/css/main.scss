@@ -17,9 +17,15 @@ $fs-400: 1.125rem;
 $ls-500: 0.295rem;
 $lh-400: 2;
 
+$left-anim: left-anim 0.5s ease-in-out;
+$bottom-anim: bottom-anim 0.5s ease-in-out;
+
 $dark: hsl(230 35% 7%);
+$dark-grey: rgb(85, 85, 85);
 $light: hsl(231 77% 90%);
+$light-blue: #d0d6f9;
 $white: hsl(0 0% 100%);
+$underline: #383b4b;
 
 // ANIMATION
 @keyframes linebeat {
@@ -45,6 +51,27 @@ $white: hsl(0 0% 100%);
     }
 }
 
+@keyframes left-anim {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+@keyframes bottom-anim {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
 html {
     font-size: 16px;
     color: $white;
@@ -52,14 +79,15 @@ html {
     overflow-y: hidden;
 }
 
+// HERO
 #hero {
-    background-image: url(../images/home/background-home-desktop.jpg);
-    background-size: cover;
-    height: 100vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding: 0 30px;
+    background-image: url(../images/home/background-home-desktop.jpg);
+    background-size: cover;
+    height: 100vh;
     .content {
         max-width: 1200px;
         width: 100%;
@@ -131,63 +159,167 @@ html {
         }
     }
 }
-@media screen and (max-width:1100px){
-    #hero{
-        .content{
-            .text{
-                h1{
+@media screen and (max-width: 1100px) {
+    #hero {
+        .content {
+            .text {
+                h1 {
                     font-size: 8rem;
                 }
             }
-            .hero-btn{
+            .hero-btn {
                 margin-bottom: -120px;
             }
         }
     }
 }
-@media screen and (max-width:991px){
-    #hero{
+@media screen and (max-width: 991px) {
+    #hero {
         justify-content: flex-end;
         padding: 0 10px;
-        .content{
+        .content {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             margin: 0;
             margin-bottom: 50px;
-            .text{
+            .text {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                h1{
+                h1 {
                     font-size: 8rem;
                 }
-                p, h2{
+                p,
+                h2 {
                     text-align: center;
                 }
             }
-            .hero-btn{
+            .hero-btn {
                 margin-bottom: 0px;
                 margin-top: 40px;
+                min-width: 200px;
+                min-height: 200px;
             }
         }
     }
 }
-@media screen and (max-width:768px){
-    #hero{
-        .content{
+@media screen and (max-width: 768px) {
+    #hero {
+        .content {
             margin-bottom: 20px;
-            .text{
-                h1{
+            .text {
+                h1 {
                     font-size: 3.5rem;
                 }
-                h2{
+                h2 {
                     font-size: 1.4rem;
                 }
-                p{
+                p {
                     font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+// DESTINATIONS
+#destinations {
+    background-image: url(../images/destination/background-destination-desktop.jpg);
+    background-size: cover;
+    height: 100vh;
+    .container {
+        max-width: 1100px;
+        width: 100%;
+        margin: auto;
+        padding-top: 150px;
+        h2 {
+            font-size: 28px;
+            font-weight: 400;
+            font-family: "Barlow Condensed";
+            letter-spacing: 4.72px;
+            margin-bottom: 100px;
+            span {
+                margin-right: 20px;
+                font-weight: 600;
+                color: $dark-grey;
+            }
+        }
+        .content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-around;
+            flex-grow: 1;
+            img{
+                animation: $left-anim;
+            }
+            .text {
+                max-width: 450px;
+                align-self: flex-start;
+                .anim{
+                    animation: $bottom-anim;
+                }
+                ul {
+                    display: flex;
+                    li {
+                        font-family: $ff-condensed;
+                        text-transform: uppercase;
+                        letter-spacing: 2.7px;
+                        font-weight: 400;
+                        position: relative;
+                        margin-right: 35px;
+                        cursor: pointer;
+                    }
+                    .active {
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            bottom: -12px;
+                            width: 100%;
+                            height: 3px;
+                            background-color: #fff;
+                        }
+                    }
+                }
+                h1 {
+                    margin: 50px 0px 23px 0px;
+                    font-family: $ff-title;
+                    text-transform: uppercase;
+                    font-size: 6.25rem;
+                }
+                .description {
+                    font-size: 1.125rem;
+                    line-height: 32px;
+                    color: $light-blue;
+                }
+                .underline {
+                    height: 1px;
+                    width: 100%;
+                    margin-top: 60px;
+                    margin-bottom: 30px;
+                    background-color: $underline;
+                }
+                .distances {
+                    display: flex;
+                    & > div:first-child {
+                        margin-right: 50px;
+                    }
+                    &--item {
+                        h3 {
+                            font-size: 0.875rem;
+                            color: $light-blue;
+                            letter-spacing: 2.36px;
+                            margin-bottom: 10px;
+                        }
+                        p {
+                            text-transform: uppercase;
+                            font-size: 1.75rem;
+                            font-family: $ff-title;
+                        }
+                    }
                 }
             }
         }
