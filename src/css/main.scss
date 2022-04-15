@@ -252,7 +252,7 @@ html {
             align-items: flex-start;
             justify-content: space-around;
             flex-grow: 1;
-            img{
+            .image-anim{
                 animation: $left-anim;
             }
             .text {
