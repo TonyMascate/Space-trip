@@ -240,7 +240,7 @@ html {
             font-weight: 400;
             font-family: "Barlow Condensed";
             letter-spacing: 4.72px;
-            margin-bottom: 100px;
+            margin: 0 30px 100px 30px;
             span {
                 margin-right: 20px;
                 font-weight: 600;
@@ -252,6 +252,7 @@ html {
             align-items: flex-start;
             justify-content: space-around;
             flex-grow: 1;
+            margin: 0 30px;
             .image-anim{
                 animation: $left-anim;
             }

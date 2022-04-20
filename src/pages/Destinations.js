@@ -6,7 +6,13 @@ function Destinations() {
   const [active, setActive] = useState("Lune");
   const [currentPlanet, setCurrentPlanet] = useState([]);
   const [changed, setchanged] = useState(false);
-  const [planetImage, setplanetImage] = useState('')
+
+  let planetImages = {
+    Lune: require("../images/destination/image-moon.png"),
+    Mars: require("../images/destination/image-mars.png"),
+    Europe: require("../images/destination/image-europa.png"),
+    Titan: require("../images/destination/image-titan.png"),
+  };
 
   useEffect(() => {
     let current = destinations.find((item) => item.name === active);
@@ -14,12 +20,11 @@ function Destinations() {
   }, [active]);
 
   useEffect(() => {
-    if(currentPlanet.images){
-      setplanetImage(currentPlanet.images.png);
-    }
-    setTimeout(() => {
+    let timer;
+    clearTimeout(timer)
+    timer = setTimeout(() => {
       setchanged(true);
-    }, 5);
+    }, 10);
     return setchanged(false);
   }, [currentPlanet]);
 
@@ -31,7 +36,7 @@ function Destinations() {
           CHOISISSEZ VOTRE DESTINATION
         </h2>
         <div className="content">
-          <img src={Lune} alt="planete" className={changed ? "image-anim" : null} />
+          <img src={planetImages[currentPlanet.name]} alt="planete" className={changed ? "image-anim" : null} />
           <div className="text">
             <ul>
               {destinations.map((item, index) => {
