@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { crew } from "../data";
 
 function Crew() {
+  const [active, setActive] = useState(0);
+  const [currentCrew, setcurrentCrew] = useState(crew[0]);
+  const [changed, setchanged] = useState(false)
+
+  const crewImages = {
+    "Douglas Hurley": require("../images/crew/image-douglas-hurley.png"),
+    "Mark Shuttleworth": require("../images/crew/image-mark-shuttleworth.png"),
+    "Victor Glover": require("../images/crew/image-victor-glover.png"),
+    "Anousheh Ansari": require("../images/crew/image-anousheh-ansari.png"),
+  };
+
+  const setActiveCrew = (element) => {
+    setActive(parseInt(element.dataset.index));
+  };
+
+  useEffect(() => {
+    setcurrentCrew(crew[active])
+  }, [active])
+
+  useEffect(() => {
+    let timer;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      setchanged(true);
+    }, 10);
+    return setchanged(false);
+  }, [currentCrew]);
+
   return (
     <section id="crew">
       <div className="container">
@@ -10,27 +38,18 @@ function Crew() {
             <h2>
               <span>02 </span>Notre équipe
             </h2>
-            <div className="info">
-              <h2>COMMANDER</h2>
-              <h1>DOUGLAS HURLEY</h1>
-              <p className="description">Douglas Gerald Hurley est un ingénieur américain, ancien pilote du Corps des Marines et ancien astronaute de la NASA. Il s'est lancé dans l'espace pour la troisième fois en tant que commandant de Crew Dragon Demo-2.</p>
+            <div className={`info ${changed && "anim"}`}>
+              <h2>{currentCrew.role}</h2>
+              <h1>{currentCrew.name}</h1>
+              <p className="description">{currentCrew.bio}</p>
             </div>
             <ul>
               {crew.map((item, index) => {
-                return <li key={index}></li>;
+                return <li key={index} data-index={index} className={index === active ? "active" : null} onClick={(e) => setActiveCrew(e.target)}></li>;
               })}
             </ul>
           </div>
-          <img src={require("../images/crew/image-douglas-hurley.png")} alt="" />
-        <h2>
-          <span>02 </span>Notre équipe
-        </h2>
-        <div className="content">
-          <div className="text">
-            <h2>COMMANDER</h2>
-            <h1>DOUGLAS HURLEY</h1>
-            <p className="description">Douglas Gerald Hurley est un ingénieur américain, ancien pilote du Corps des Marines et ancien astronaute de la NASA. Il s'est lancé dans l'espace pour la troisième fois en tant que commandant de Crew Dragon Demo-2.</p>
-          </div>
+          <img className={changed && "anim-image"} src={crewImages[currentCrew.name]} alt="membre de l'équipage" />
         </div>
       </div>
     </section>

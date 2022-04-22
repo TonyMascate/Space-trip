@@ -17,6 +17,7 @@ $fs-400: 1.125rem;
 $ls-500: 0.295rem;
 $lh-400: 2;
 
+$right-anim: right-anim 0.5s ease-in-out;
 $left-anim: left-anim 0.5s ease-in-out;
 $bottom-anim: bottom-anim 0.5s ease-in-out;
 
@@ -51,6 +52,16 @@ $underline: #383b4b;
     }
 }
 
+@keyframes right-anim {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
 @keyframes left-anim {
     from {
         transform: translateX(-100px);
@@ -432,6 +443,7 @@ html {
     justify-content: center;
     position: relative;
     z-index: 1;
+    overflow: hidden;
     &::after{
         content: '';
         position: absolute;
@@ -449,14 +461,19 @@ html {
         padding-top: 120px;
         .content {
             display: flex;
-            align-items: flex-start;
+            align-items: flex-end;
             justify-content: space-between;
             width: 100%;
+            height: 80vh;
+            .anim-image{
+                animation: $right-anim;
+            }
             .text {
                 max-width: 500px;
                 height: 100%;
-                display: grid;
-                grid-row-gap: 100%;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
                 h2 {
                     font-size: 28px;
                     font-weight: 400;
@@ -469,6 +486,9 @@ html {
                         color: $dark-grey;
                     }
                 }
+                .anim{
+                    animation: $left-anim;
+                }
                 .info{
                     h2{
                         font-size: 2rem;
@@ -479,17 +499,27 @@ html {
                     h1{
                         font-size: 3.5rem;
                         font-family: $ff-title;
+                        text-transform: uppercase;
                         margin: 20px 0;
+                    }
+                    .description{
+                        font-size: 1.125rem;
+                        color: #d0d6f993;
+                        line-height: 32px;
                     }
                 }
                 ul {
                     display: flex;
+                    margin-bottom: 80px;
                     li {
-                        width: 10px;
-                        height: 10px;
-                        background-color: white;
+                        width: 15px;
+                        height: 15px;
+                        background-color: #979797;
                         border-radius: 100%;
                         margin-right: 15px;
+                    }
+                    .active{
+                        background-color: white;
                     }
                 }
             }
