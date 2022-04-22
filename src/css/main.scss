@@ -241,6 +241,7 @@ html {
             font-family: "Barlow Condensed";
             letter-spacing: 4.72px;
             margin: 0 30px 100px 30px;
+            text-transform: uppercase;
             span {
                 margin-right: 20px;
                 font-weight: 600;
@@ -253,13 +254,13 @@ html {
             justify-content: space-around;
             flex-grow: 1;
             margin: 0 30px;
-            .image-anim{
+            .image-anim {
                 animation: $left-anim;
             }
             .text {
                 max-width: 450px;
                 align-self: flex-start;
-                .anim{
+                .anim {
                     animation: $bottom-anim;
                 }
                 ul {
@@ -326,27 +327,26 @@ html {
         }
     }
 }
-
 @media screen and (max-width: 1050px) {
-    #destinations{
+    #destinations {
         overflow-y: auto;
-        .container{
+        .container {
             padding-top: 120px;
             padding-bottom: 30px;
-            h2{
+            h2 {
                 margin: 0 30px 60px 30px;
                 font-size: 1.25rem;
             }
-            .content{
+            .content {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                img{
+                img {
                     width: 300px;
                     height: 300px;
                     margin-bottom: 50px;
                 }
-                .text{
+                .text {
                     align-self: center;
                     display: flex;
                     align-items: center;
@@ -354,19 +354,19 @@ html {
                     flex-direction: column;
                     text-align: center;
                     max-width: 600px;
-                    h1{
+                    h1 {
                         font-size: 5rem;
                     }
-                    .description{
+                    .description {
                         font-size: 1rem;
                     }
-                    .distances{
+                    .distances {
                         display: flex;
                         align-items: center;
                         justify-content: space-around;
                         & > div:first-child {
-                        margin-right: 0px;
-                    }
+                            margin-right: 0px;
+                        }
                     }
                 }
             }
@@ -374,52 +374,125 @@ html {
     }
 }
 @media screen and (max-width: 768px) {
-    #destinations{
-        .container{
+    #destinations {
+        .container {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             padding-top: 80px;
-            h2{
+            h2 {
                 font-size: 1rem;
                 margin: 0 0 30px 0;
                 text-align: center;
                 line-height: 20px;
             }
-            .content{
-                
-                img{
+            .content {
+                img {
                     width: 170px;
                     height: 170px;
                 }
-                .text{
-                    ul{
+                .text {
+                    ul {
                         font-size: 0.875rem;
                         max-width: 250px;
                         justify-content: space-between;
                         width: 80vw;
-                        li{
+                        li {
                             margin: 0;
                         }
                     }
-                    h1{
+                    h1 {
                         font-size: 3.5rem;
                     }
-                    .description{
+                    .description {
                         font-size: 0.93rem;
                     }
-                    .underline{
+                    .underline {
                         margin: 30px 0;
                     }
-                    .distances{
+                    .distances {
                         flex-direction: column;
                         & > div:first-child {
-                        margin-bottom: 20px;
-                    }
-                    }
+                            margin-bottom: 20px;
+                        }
                     }
                 }
             }
         }
     }
+}
+
+// CREW
+#crew {
+    background-image: url(../images/crew/background-crew-desktop.jpg);
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.5;
+        z-index: -1;
+    }
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        padding-top: 120px;
+        .content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            .text {
+                max-width: 500px;
+                height: 100%;
+                display: grid;
+                grid-row-gap: 100%;
+                h2 {
+                    font-size: 28px;
+                    font-weight: 400;
+                    font-family: "Barlow Condensed";
+                    letter-spacing: 4.72px;
+                    text-transform: uppercase;
+                    span {
+                        margin-right: 20px;
+                        font-weight: 600;
+                        color: $dark-grey;
+                    }
+                }
+                .info{
+                    h2{
+                        font-size: 2rem;
+                        color: $dark-grey;
+                        font-family: $ff-title;
+                        letter-spacing: 0px;
+                    }
+                    h1{
+                        font-size: 3.5rem;
+                        font-family: $ff-title;
+                        margin: 20px 0;
+                    }
+                }
+                ul {
+                    display: flex;
+                    li {
+                        width: 10px;
+                        height: 10px;
+                        background-color: white;
+                        border-radius: 100%;
+                        margin-right: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
