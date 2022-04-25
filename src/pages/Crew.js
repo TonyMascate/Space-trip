@@ -35,11 +35,11 @@ function Crew() {
   return (
     <section id="crew">
       <div className="container">
-        <div className="content">
-          <div className="text">
             <h2>
               <span>02 </span>Notre équipe
             </h2>
+        <div className="content">
+          <div className="text">
             <div id='info' className='info'>
               <h2>{currentCrew.role}</h2>
               <h1>{currentCrew.name}</h1>
