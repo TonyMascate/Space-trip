@@ -87,7 +87,6 @@ html {
     font-size: 16px;
     color: $white;
     font-family: $ff-normal;
-    overflow-y: hidden;
 }
 
 // HERO
@@ -98,7 +97,7 @@ html {
     padding: 0 30px;
     background-image: url(../images/home/background-home-desktop.jpg);
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
     .content {
         max-width: 1200px;
         width: 100%;
@@ -240,7 +239,8 @@ html {
 #destinations {
     background-image: url(../images/destination/background-destination-desktop.jpg);
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 50px;
     .container {
         max-width: 1100px;
         width: 100%;
@@ -437,7 +437,8 @@ html {
 // CREW
 #crew {
     background-image: url(../images/crew/background-crew-desktop.jpg);
-    height: 100vh;
+    background-size: cover;
+    min-height: 100vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -517,10 +518,26 @@ html {
                         background-color: #979797;
                         border-radius: 100%;
                         margin-right: 15px;
+                        cursor: pointer;
                     }
                     .active{
                         background-color: white;
                     }
+                }
+            }
+            img{
+                height: 100%;
+            }
+        }
+    }
+}
+@media screen and (max-height: 800px){
+    #crew{
+        .container{
+            .content{
+                justify-content: center;
+                .text{
+                    margin-right: 150px;
                 }
             }
         }

@@ -5,7 +5,6 @@ import { destinations } from "../data";
 function Destinations() {
   const [active, setActive] = useState("Lune");
   const [currentPlanet, setCurrentPlanet] = useState([]);
-  const [changed, setchanged] = useState(false);
 
   let planetImages = {
     Lune: require("../images/destination/image-moon.png"),
@@ -20,12 +19,15 @@ function Destinations() {
   }, [active]);
 
   useEffect(() => {
-    let timer;
-    clearTimeout(timer)
-    timer = setTimeout(() => {
-      setchanged(true);
-    }, 10);
-    return setchanged(false);
+    const image = document.getElementById("image-planete");
+    image.classList.remove("image-anim");
+    void image.offsetWidth;
+    image.classList.add("image-anim");
+
+    const text = document.getElementById("info");
+    text.classList.remove("anim");
+    void text.offsetWidth;
+    text.classList.add("anim");
   }, [currentPlanet]);
 
   return (
@@ -36,7 +38,7 @@ function Destinations() {
           CHOISISSEZ VOTRE DESTINATION
         </h2>
         <div className="content">
-          <img src={planetImages[currentPlanet.name]} alt="planete" className={changed ? "image-anim" : null} />
+          <img src={planetImages[currentPlanet.name]} alt="planete" id='image-planete'/>
           <div className="text">
             <ul>
               {destinations.map((item, index) => {
@@ -53,7 +55,7 @@ function Destinations() {
                 );
               })}
             </ul>
-            <div className={changed ? "anim" : null}>
+            <div id='info'>
               <h1>{currentPlanet.name}</h1>
               <p className="description">{currentPlanet.description}</p>
               <div className="underline"></div>

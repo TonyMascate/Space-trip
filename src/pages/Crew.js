@@ -4,7 +4,6 @@ import { crew } from "../data";
 function Crew() {
   const [active, setActive] = useState(0);
   const [currentCrew, setcurrentCrew] = useState(crew[0]);
-  const [changed, setchanged] = useState(false)
 
   const crewImages = {
     "Douglas Hurley": require("../images/crew/image-douglas-hurley.png"),
@@ -22,12 +21,15 @@ function Crew() {
   }, [active])
 
   useEffect(() => {
-    let timer;
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      setchanged(true);
-    }, 10);
-    return setchanged(false);
+    const image = document.getElementById("image-member");
+    image.classList.remove("anim-image");
+    void image.offsetWidth;
+    image.classList.add("anim-image");
+
+    const text = document.getElementById("info");
+    text.classList.remove("anim");
+    void text.offsetWidth;
+    text.classList.add("anim");
   }, [currentCrew]);
 
   return (
@@ -38,7 +40,7 @@ function Crew() {
             <h2>
               <span>02 </span>Notre équipe
             </h2>
-            <div className={`info ${changed && "anim"}`}>
+            <div id='info' className='info'>
               <h2>{currentCrew.role}</h2>
               <h1>{currentCrew.name}</h1>
               <p className="description">{currentCrew.bio}</p>
@@ -49,7 +51,7 @@ function Crew() {
               })}
             </ul>
           </div>
-          <img className={changed && "anim-image"} src={crewImages[currentCrew.name]} alt="membre de l'équipage" />
+          <img id='image-member' src={crewImages[currentCrew.name]} alt="membre de l'équipage" />
         </div>
       </div>
     </section>
