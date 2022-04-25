@@ -468,16 +468,11 @@ html {
             align-items: flex-end;
             justify-content: space-between;
             width: 100%;
-            height: 80vh;
             .anim-image{
                 animation: $right-anim;
             }
             .text {
                 max-width: 500px;
-                height: 100%;
-                display: flex;
-                justify-content: space-between;
-                flex-direction: column;
                 h2 {
                     font-size: 28px;
                     font-weight: 400;
@@ -494,6 +489,7 @@ html {
                     animation: $left-anim;
                 }
                 .info{
+                    margin: 10vh 0;
                     h2{
                         font-size: 2rem;
                         color: $dark-grey;
@@ -529,7 +525,8 @@ html {
                 }
             }
             img{
-                height: 100%;
+                height: 70vh;
+                min-height: 400px;
             }
         }
     }
