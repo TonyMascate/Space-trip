@@ -460,6 +460,9 @@ html {
         max-width: 1200px;
         width: 100%;
         padding-top: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .content {
             display: flex;
             align-items: flex-end;
@@ -535,7 +538,7 @@ html {
     #crew{
         .container{
             .content{
-                justify-content: center;
+                width: 90vw;
                 .text{
                     margin-right: 150px;
                 }
